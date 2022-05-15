@@ -1,0 +1,385 @@
+\chapter{Intro to C/C++}
+ในหัวข้อนี้ เราจะแนะนำเกี่ยวกับการเขียนโปรแกรมภาษา C และ C++ ในเบื้องต้น เพื่อเป็นพื้นฐานสำหรับการเขียนโปรแกรมที่ซับซ้อนในหัวข้ออื่นๆ ต่อไป
+\section{Syntax}
+\begin{lstlisting}
+#include <stdio.h>
+
+int main() {
+  return 0;
+}
+\end{lstlisting}
+โปรแกรมด้านบนนี้เป็นส่วนของโปรแกรมที่ต้องมีสำหรับการเขียนโปรแกรมภาษา C เพื่อให้การทำงานของโปรแกรมเป็นไปได้อย่างปกติ
+
+\textbf{บรรทัดที่ 1:} \textbf{\texttt{\#include}} คือการนำ header file library  เข้ามาใช้ในโปรแกรม โดย header files มีหน้าที่เพิ่มฟังก์ชั่นการทำงานของโปรแกรมให้สามารถทำงานได้ตามวัตุประสงค์ของเรา ในที่นี้ "stdio.h" เป็นชื่อที่ย่อมาจาก "Standard Input Output" ซึ่งเป็น header file สำคัญในการรับข้อมูลนำเข้าและส่งออก
+
+\textbf{บรรทัดที่ 3:} เป็นการประกาศฟังก์ชั่นหลักที่ใช้ในการทำงานของโปรแกรม ทุกครั้งที่โปรแกรมเริ่มทำงานจะเริ่มทำงานที่ฟังก์ชั่น main นี้ก่อนเสมอ
+
+\textbf{บรรทัดที่ 4:} คำสั่ง \textbf{\texttt{return 0;}} เป็นคำสั่งเพื่อจบการทำงานของโปรแกรม โดย 0 เป็นรหัสคำสั่งที่โปรแกรมส่งออกให้ทราบว่าการทำงานของโปรแกรมนี้มีความผิดพลาดเป็น 0 (ไม่มี error)
+
+\noindent\textbf{หมายเหตุ:} จะสังเกตเห็นได้ว่าคำสั่งของภาษา C/C++ จะลงท้ายด้วย semicolon (\textbf{\texttt{;}}) เสมอ และขอบเขตการทำงานจะถูกระบุด้วยเครื่องหมายปีกกา (\textbf{\texttt{\{ \}}})
+
+\newpage
+\begin{lstlisting}
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+  return 0;
+}
+\end{lstlisting}
+โปรแกรมด้านบนนี้เป็นส่วนของโปรแกรมภาษา C++ โดยสังเกตว่าจะคล้ายกับภาษา C มาก แตกต่างกันเพียงบรรทัดที่ 1 และมีบรรทัดที่ 2 เพิ่มมา
+
+\textbf{บรรทัดที่ 1:} "bits/stdc++.h" เป็น header file ของภาษา C++ ที่รวมหลาย header files ที่เป็นประโยชน์เข้าไว้ด้วยกัน เพื่อเพิ่มความสะดวกของผู้ใช้ (ไม่ต้องทำการ \textbf{\texttt{\#include}} หลายๆ รอบ)
+
+\textbf{บรรทัดที่ 2:} \textbf{\texttt{using namespace std;}} เป็นคำสั่งเพื่อละการเขียน "\textbf{\texttt{std::}}" หน้าบางคำสั่ง เพื่อให้สามารถขียนโปรแกรมได้รวดเร็วยิ่งขึ้น
+
+\subsection{Comments}
+การเขียนคำอธิบายในภาษา C/C++ สามารถทำได้ 2 วิธี
+\begin{enumerate}
+\item Single-line comments เป็นการเขียนคำอธิบายแบบบรรทัดเดียว ใช้เครื่องหมาย \textbf{\texttt{//}} ไว้หน้าข้อความที่ต้องการให้กลายเป็นอธิบาย และไม่ถูก compile 
+\begin{lstlisting}
+// This is a single-line comment
+#include<bits/stdc++.h>	//Can be used after each line too 
+\end{lstlisting}
+\item Multi-line comments เป็นการเขียนคำอธิบายแบบหลายบรรทัด ใช้เครื่องหมายเริ่ม \textbf{\texttt{/*}} และเครื่องหมายจบ \textbf{\texttt{*/}} โดยข้อความที่อยู่ระหว่างเครื่องหมายทั้ง 2 จะกลายเป็นคำอธิบายที่ไม่ถูก compile
+\begin{lstlisting}
+/*
+This is the first line of multi-line comment
+This is the second line of multi-line comment
+*/
+\end{lstlisting}
+\end{enumerate}
+
+\section{Variables}
+ในภาษา C/C++ มีตัวแปรที่เก็บข้อมูลได้หลากหลายประเภทด้วยกัน
+\subsubsection{Basic Data Types}
+\begin{center}
+\begin{tabular}{||c|c|c||}
+\hline
+\textbf{Data type} & \textbf{Size} & \textbf{Description} \\
+\hline
+\texttt{boolean} & 1 byte & เก็บค่าความจริง (true / false) \\
+\texttt{char} & 1 byte & เก็บตัวอักขระ 1 ตัว \\
+\texttt{int} & 2 or 4 bytes & เก็บจำนวนเต็ม \\
+\texttt{double} & 8 bytes & เก็บจำนวนทศนิยม ความแม่นยำไม่เกิน 15 หลักทศนิยม \\
+\hline
+\end{tabular}
+\end{center}
+นอกจากนี้ ยังมีการนำ \texttt{char} มาประยุกต์เป็น array of char (\texttt{char[]}) เพื่อให้สามารถเก็บชุดอักขระ (String) ได้
+\subsection{Variables Declaration}
+การประกาศตัวแปรสามารถทำได้โดยการระบุประเภทตัวแปร ชื่อตัวแปร เป็นเบื้องต้น ซึ่งสามารถประกาศได้ 2 วิธี ได้แก่
+\begin{enumerate}
+\item การประกาศตัวแปรพร้อมระบุค่า
+\begin{lstlisting}
+int firstNumber = 10;
+\end{lstlisting}
+\item การประกาศตัวแปรแล้วระบุค่าภายหลัง
+\begin{lstlisting}
+double secondNumber;
+secondNumber = 10.2;
+\end{lstlisting}
+\end{enumerate}
+\textbf{หมายเหตุ:} การระบุค่าใหม่ไปยังตัวแปรที่มีค่าอยู่แล้ว จะเป็นการเขียนค่าใหม่ทับลงไป ค่าเก่าจะหายไป
+\begin{lstlisting}
+int thirdNumber = 10;
+thirdNumber = 15;
+//thirdNumber's current value is 15
+\end{lstlisting}
+
+นอกจากนี้ การประกาศตัวแปรประเภทเดียวกันหลายตัวแปรสามารถทำได้ในบรรทัดเดียวกัน โดยใช้เครื่องหมาย comma (\textbf{\texttt{,}}) ในการคั่นระหว่างตัวแปร
+\begin{lstlisting}
+int w = 1, x = 2;
+\end{lstlisting}
+
+การระบุค่าเดียวกันให้กับตัวแปรหลายตัวแปรก็สามารถทำได้ในบรรทัดเดียวกันได้
+\begin{lstlisting}
+int y, z;
+y = z = 3;
+/*
+same result as
+y = 3;
+z = 3;
+*/
+\end{lstlisting}
+
+การประกาศตัวแปรค่าคงที่สามารถทำได้คล้ายกับการประกาศตัวแปรทั่วไป เพียงแค่เพิ่ม \textbf{\texttt{const}} ไปข้างหน้าประเภทตัวแปรนั้น โดยตัวแปรค่าคงที่จะไม่สามารถแก้ไขได้หลังจากการประกาศ จึงต้องทำการประกาศตัวแปรพร้อมระบุค่า
+\begin{lstlisting}
+const int maxNumber = 100;
+maxNumber = 10;	//error: can\'t change constant variable's value
+\end{lstlisting}
+
+\newpage
+\subsubsection{General rules for variables naming}
+\begin{enumerate}
+\item ชื่อตัวแปรสามารถมีตัวอักษร, ตัวเลข, และ underscore (\texttt{\_}) เท่านั้น ไม่สามารถมีช่องว่างหรือตัวอักษรพิเศษ เช่น \texttt{!, \#, \%} เป็นต้น
+\item ชื่อตัวแปรต้องขึ้นต้นด้วยตัวอักษรหรือ underscore เท่านั้น ไม่สามารถขึ้นต้นด้วยตัวเลขได้
+\item ชื่อตัวแปรเป็น case sensitive กล่าวคือตัวอักษรพิมพ์ใหญ่และพิมพ์เล็กมีผลต่อการระบุชื่อตัวแปร (ตัวแปรชื่อ firstNumber และ FirstNumber ถือว่าไม่เป็นตัวแปรเดียวกัน)
+\item ชื่อตัวแปรไม่สามารถเป็นคำสงวน (Reserved words) ได้
+\end{enumerate}
+\subsubsection{Reserved words}
+\begin{center}
+\begin{tabular}{||c|c|c||}
+\hline
+alignas & alignof & and \\
+and\_eq & asm & atomic\_cancel \\
+atomic\_commit & atomic\_noexcept & auto \\
+bitand & bitor & bool \\
+break & case & catch \\
+char & char8\_t & char16\_t \\
+char32\_t & class & compl \\
+concept & const & consteval \\
+constexpr & constinit & const\_cast \\
+continue & co\_await & co\_return \\
+co\_yield & decltype & default \\
+delete & do & double \\
+dynamic\_cast & else & enum \\
+explicit & export & extern \\
+false & float & for \\
+friend & goto & if \\
+inline & int & long \\
+mutable & namespace & new \\
+noexcept & not & not\_eq \\
+nullptr & operator & or \\
+or\_eq & private & protected \\
+public & reflexpr & register \\
+reinterpret\_cast & requires & return \\
+short & signed & sizeof \\
+static & static\_assert & static\_cast \\
+struct & switch & stnchronized \\
+template & this & thread\_local \\
+throw & true & try \\
+typedef & typeid & typename \\
+union & unsigned & using \\
+virtual & void & volatile \\
+wchar\_t & while & xor \\
+xor\_eq &  &  \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Input/Output}
+
+การรับค่าจากผู้ใช้ และการแสดงผลทางหน้าจอสามารถทำได้แตกต่างกันตามภาษา C หรือ C++
+\begin{lstlisting}
+int w;
+double x;
+char y;
+char[10] z;
+
+//C language
+scanf("%d %lf %c %s", &w, &x, &y, z);
+printf("%d %lf %c %s\n", w, x, y, z);
+\end{lstlisting}
+การรับค่าของภาษา C จะใช้คำสั่ง \textbf{\texttt{scanf}} โดยจะต้องระบุประเภทของตัวแปรที่ต้องการจะรับเข้ามาด้วย ในตัวอย่างจะเห็นได้ว่า
+\begin{itemize}
+\item ตัวระบุประเภทตัวที่ 1 คือ \texttt{\%d} ซึ่งจะจับคู่กับตัวแปรชื่อ \texttt{w}
+\item ตัวระบุประเภทตัวที่ 2 คือ \texttt{\%lf} ซึ่งจะจับคู่กับตัวแปรชื่อ \texttt{x}
+\item ตัวระบุประเภทตัวที่ 3 คือ \texttt{\%c} ซึ่งจะจับคู่กับตัวแปรชื่อ \texttt{y}
+\item ตัวระบุประเภทตัวที่ 4 คือ \texttt{\%s} ซึ่งจะจับคู่กับตัวแปรชื่อ \texttt{z}
+\end{itemize}
+และจะสังเกตได้ว่าการจับคู่ในการรับค่าจะต้องใส่เครื่องหมาย \textbf{\texttt{\&}} หน้าตัวแปรทุกตัว นอกจากตัวแปรประเภท char[]
+\begin{center}
+\begin{tabular}{||c|c||}
+\hline
+ประเภทตัวแปร & ตัวระบุประเภท \\
+\hline
+\texttt{int} & \texttt{\%d} \\
+\texttt{double} & \texttt{\%lf} \\
+\texttt{char} & \texttt{\%c} \\
+\texttt{char[]} & \texttt{\%s} \\
+\hline
+\end{tabular}
+\end{center}
+การแสดงผลของภาษา C จะใช้คำสั่ง \textbf{\texttt{printf}} โดยจะมีลักษณะคล้ายกับการรับค่าด้วยคำสั่ง \textbf{\texttt{scanf}} กล่าวคือต้องใช้ตัวระบุประเภทเช่นเดียวกัน แต่มีความแตกต่างกันที่ ไม่ต้องใส่เครื่องหมาย \textbf{\texttt{\&}} หน้าตัวแปรใดๆ เลย
+
+\noindent\textbf{หมายเหตุ:} \textbf{\texttt{\textbackslash n}} ที่อยู่ต่อท้ายเป็นการระบุว่า ให้ขึ้นบรรทัดใหม่เมื่อแสดงผลบรรทัดนี้แล้ว
+
+\begin{lstlisting}
+//C++ language
+cin >> w >> x >> y >> z;
+cout << w << ' ' << x << ' ' << y << ' ' << z << endl;
+\end{lstlisting}
+การรับค่าของภาษา C++ จะใช้คำสั่ง \textbf{\texttt{cin}} โดยมีเครื่องหมาย \textbf{\texttt{<<}} คั่นอยู่ระหว่างคำสั่ง และตัวแปรต่างๆ \\
+การแสดงผลของภาษา C++ จะใช้คำสั่ง \textbf{\texttt{cout}} โดยมีเครื่องหมาย \textbf{\texttt{>>}} คั่นอยู่ระหว่างคำสั่ง และตัวแปรต่างๆ \\
+นอกจากนี้ โปรแกรมภาษา C++ ก็สามารถใช้คำสั่ง \textbf{\texttt{scanf}} และ \textbf{\texttt{printf}} ของภาษา C ได้เช่นกัน
+
+\noindent\textbf{หมายเหตุ:} \textbf{\texttt{endl}} ที่อยู่ต่อท้ายเป็นการระบุว่า ให้ขึ้นบรรทัดใหม่เมื่อแสดงผลบรรทัดนี้แล้ว (เช่นเดียวกันกับ \texttt{\textbackslash n})
+
+\newpage
+\subsection{Operators}
+\subsubsection{Arithmetic}
+\begin{center}
+\begin{tabular}{||c|c|c|c||}
+\hline
+\textbf{ตัวดำเนินการ} & \textbf{ชื่อ} & \textbf{คำอธิบาย} & \textbf{การใช้งาน} \\
+\hline
+\texttt{+} & การบวก & บวก 2 จำนวนเข้าด้วยกัน & \texttt{x + y} \\
+\texttt{-} & การลบ & ลบ 2 จำนวนเข้าด้วยกัน & \texttt{x - y} \\
+\texttt{*} & การคูณ & คูณ 2 จำนวนเข้าด้วยกัน & \texttt{x * y} \\
+\texttt{/} & การหาร & หารจำนวนแรกด้วยจำนวนที่ 2 & \texttt{x / y} \\
+\texttt{\%} & การหารเอาเศษ & เศษจากการหารจำนวนแรกด้วยจำนวนที่ 2 & \texttt{x \% y} \\
+\texttt{++} & Increment & เพิ่มค่าตัวแปรขึ้นไป 1 & \texttt{x++} หรือ \texttt{++x} \\
+\texttt{--} & Decrement & ลดค่าตัวแปรลงไป 1 & \texttt{x--} หรือ \texttt{--x} \\
+\hline
+\end{tabular}
+\end{center}
+\subsubsection{Assignment}
+\begin{center}
+\begin{tabular}{||c|c|c||}
+\hline
+\textbf{ตัวดำเนินการ} & \textbf{การใช้งาน} & \textbf{ผลลัพธ์} \\
+\hline
+\texttt{=} & \texttt{x = 5} & \texttt{x = 5} \\
+\texttt{+=} & \texttt{x += 5} & \texttt{x = x + 5} \\
+\texttt{-=} & \texttt{x -= 5} & \texttt{x = x - 5} \\
+\texttt{*=} & \texttt{x *= 5} & \texttt{x = x * 5} \\
+\texttt{/=} & \texttt{x /= 5} & \texttt{x = x / 5} \\
+\texttt{\%=} & \texttt{x \%= 5} & \texttt{x = x \% 5} \\
+\texttt{\&=} & \texttt{x \&= 5} & \texttt{x = x \& 5} \\
+\texttt{|=} & \texttt{x |= 5} & \texttt{x = x | 5} \\
+\hline
+\end{tabular}
+\end{center}
+\subsubsection{Comparison}
+\begin{center}
+\begin{tabular}{||c|c|c||}
+\hline
+\textbf{ตัวดำเนินการ} & \textbf{ชื่อ} & \textbf{การใช้งาน} \\
+\hline
+\texttt{==} & เท่ากับ & \texttt{x == y} \\
+\texttt{!=} & ไม่เท่ากับ & \texttt{x != y} \\
+\texttt{>} & มากกว่า & \texttt{x > y} \\
+\texttt{<} & น้อยกว่า & \texttt{x < y} \\
+\texttt{>=} & มากกว่าหรือเท่ากับ & \texttt{x >= y} \\
+\texttt{<=} & น้อยกว่าหรือเท่ากับ & \texttt{x <= y} \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Logical}
+\begin{center}
+\begin{tabular}{||c|c|c||}
+\hline
+\textbf{ตัวดำเนินการ} & \textbf{ชื่อ} & \textbf{การใช้งาน} \\
+\hline
+\texttt{\&\&} & และ (ตรรกศาสตร์) & \texttt{x > 1 \&\& x < 10} \\
+\texttt{||} & หรือ (ตรรกศาสตร์) & \texttt{x < 1 || x > 10} \\
+\texttt{!} & นิเสธ & \texttt{!(x > 1 \&\& x < 10)} \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+\section{Conditions}
+เราสามารถเลือกให้โปรแกรมทำบางคำสั่ง เมื่อเงื่อนไขเป็นจริงเท่านั้น โดยการใช้ \textbf{\texttt{if-else}} หรือ \textbf{\texttt{switch}} ได้
+\begin{lstlisting}
+if (condition1) {
+	// code to be executed if the condition1 is true
+}else if (condition2) {
+	// code to be executed if the condition1 is false and condition2 is true
+} else if (condition3) {
+	// code to be executed if the condition1,2 is false and condition 3 is true
+} else {
+	// code to be executed if the condition1,2,3 is false
+}
+\end{lstlisting}
+การเขียนเงื่อนไขโดยใช้ \textbf{\texttt{if}}, \textbf{\texttt{else if}}, และ \textbf{\texttt{else}} จะเป็นที่นิยมเนื่องจากใช้งานได้ง่ายและสะดวก
+
+\begin{lstlisting}
+switch (expression) {
+	case x:
+    	// code to be executed if expression is equal to x
+        break;
+    case y:
+    	// code to be executed if expression is equal to y
+        break;
+    default:
+    	// code to be executed if expression is not equal to any case
+}
+\end{lstlisting}
+การเขียนเงื่อนไขโดยการใช้ \textbf{\texttt{switch}} จะต้องระบุ \texttt{expression}ให้ตรงกับ \texttt{case} พอดี ไม่สามารถเปรียบเทียบน้อยกว่า หรือมากกว่าได้
+
+\noindent\textbf{หมายเหตุ:} ทุก \texttt{case} ของ \texttt{switch} จะต้องมีคำสั่ง \textbf{\texttt{break}} ต่อท้ายอยู่เสมอ
+
+\newpage
+\section{Loop}
+การวนซ้ำสามารถใช้ในการทำงานซ้ำหลายๆ ครั้งตราบใดที่เงื่อนไขของการวนซ้ำยังเป็นจริงอยู่ ประโยชน์ของการวนซ้ำคือลดระยะเวลาการเขียนลง ลดการเกิด errors และทำให้โปรแกรมอ่านง่ายขึ้น
+
+การวนซ้ำทุกรูปแบบจะมี 3 สิ่งสำคัญได้แก่
+\begin{enumerate}
+\item จุดเริ่มต้น (initial)
+\item เงื่อนไข (condition)
+\item การเปลี่ยนแปลง (update)
+\end{enumerate}
+
+\begin{lstlisting}
+for (initial; condition; update) {
+	//block of code to be executed
+}
+
+for (int i = 0; i < 5; i++) {
+	printf("%d\n", i);
+}
+
+initial
+while (condition) {
+	//block of code to be executed
+    update
+}
+
+int i = 0;
+while (i < 5) {
+	printf("%d\n", i);
+    i++;
+}
+\end{lstlisting}
+ตัวอย่างโปรแกรมด้านบนเป็นโปรแกรมเพื่อแสดงผลตัวเลข 0 ถึง 4 บรรทัดละ 1 จำนวน โดยการวนซ้ำด้วย \textbf{\texttt{for}} และ \textbf{\texttt{while}} เริ่มต้นที่ \textbf{\texttt{i = 0}} โดยมีเงื่อนไขการวนซ้ำคือ \textbf{\texttt{i < 5}} และมีส่วนการเปลี่ยนแปลงคือ \textbf{\texttt{i++}}
+\begin{itemize}
+\item ขณะที่ \textbf{\texttt{i = 0}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{0}} ออกมา
+\item ขณะที่ \textbf{\texttt{i = 1}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{1}} ออกมา
+\item ขณะที่ \textbf{\texttt{i = 2}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{2}} ออกมา
+\item ขณะที่ \textbf{\texttt{i = 3}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{3}} ออกมา
+\item ขณะที่ \textbf{\texttt{i = 4}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{4}} ออกมา
+\item ขณะที่ \textbf{\texttt{i = 5}} ซึ่ง \textbf{\texttt{i !< 5}} จึงหยุดการวนซ้ำ
+\end{itemize}
+นอกจากนี้ยังมีการวนซ้ำแบบ \textbf{\texttt{do-while}} ซึ่งจะทำงานก่อน 1 รอบไม่ว่าเงื่อนไขที่กำหนดจะเป็นจริงหรือไม่ แล้วจึงตรวจสอบเงื่อนไขก่อนทำงานรอบถัดไป
+\begin{lstlisting}
+int i = 5;
+do {
+	printf("%d\n", i);
+}while (i < 5);
+\end{lstlisting}
+โปรแกรมด้านบนนี้จะแสดงผลเลข 5 ออกมาแล้วจึงหยุดการทำงาน
+
+ในบางกรณี เราจำเป็นต้องหยุดการวนซ้ำกลางคัน หรือข้ามการวนซ้ำบางขั้นตอน จึงมีคำสั่ง \textbf{\texttt{break}} สำหรับหยุดการวนซ้ำนั้น และ \textbf{\texttt{continue}} สำหรับข้ามการวนซ้ำขั้นตอนหนึ่งๆ
+\begin{lstlisting}
+for (int i = 0; i < 5; i++) {
+	if (i == 2) {
+    	break;
+    }
+	printf("%d\n",i);
+}
+\end{lstlisting}
+โปรแกรมด้านบนนี้จะแสดงผลแค่เลข 0 และเลข 1 บรรทัดละ 1 จำนวน
+\begin{itemize}
+\item ขณะที่ \textbf{\texttt{i = 0}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{0}} ออกมา
+\item ขณะที่ \textbf{\texttt{i = 1}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{1}} ออกมา
+\item ขณะที่ \textbf{\texttt{i = 2}} ซึ่ง \textbf{\texttt{i < 5}} แต่ตรงกับเงื่อนไขของคำสั่ง \textbf{\texttt{break}} จึงหยุดการวนซ้ำทันที
+\end{itemize}
+
+\begin{lstlisting}
+for (int i = 0; i < 5; i++) {
+	if (i == 2) {
+    	continue;
+    }
+	printf("%d\n",i);
+}
+\end{lstlisting}
+โปรแกรมด้านบนนี้จะแสดงผลแค่เลข 0, 1, 3, และ 4 บรรทัดละ 1 จำนวน
+\begin{itemize}
+\item ขณะที่ \textbf{\texttt{i = 0}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{0}} ออกมา
+\item ขณะที่ \textbf{\texttt{i = 1}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{1}} ออกมา
+\item ขณะที่ \textbf{\texttt{i = 2}} ซึ่ง \textbf{\texttt{i < 5}} แต่ตรงกับเงื่อนไขของคำสั่ง \textbf{\texttt{continue}} จึงข้ามการวนซ้ำขั้นตอนนี้ไป และไม่มีการแสดงผลเลข \textbf{\texttt{2}} ออกมา
+\item ขณะที่ \textbf{\texttt{i = 3}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{3}} ออกมา
+\item ขณะที่ \textbf{\texttt{i = 4}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{4}} ออกมา
+\item ขณะที่ \textbf{\texttt{i = 5}} ซึ่ง \textbf{\texttt{i !< 5}} จึงหยุดการวนซ้ำ
+\end{itemize}
