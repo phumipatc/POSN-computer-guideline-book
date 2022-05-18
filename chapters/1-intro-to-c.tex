@@ -1,5 +1,5 @@
 \chapter{Intro to C/C++}
-ในหัวข้อนี้ เราจะแนะนำเกี่ยวกับการเขียนโปรแกรมภาษา C และ C++ ในเบื้องต้น เพื่อเป็นพื้นฐานสำหรับการเขียนโปรแกรมที่ซับซ้อนในหัวข้ออื่นๆ ต่อไป
+ในหัวข้อนี้ จะเป็นการแนะนำเกี่ยวกับการเขียนโปรแกรมภาษา C และ C++ ในเบื้องต้น เพื่อเป็นพื้นฐานสำหรับการเขียนโปรแกรมที่ซับซ้อนในหัวข้ออื่นๆ ต่อไป
 \section{Syntax}
 \begin{lstlisting}
 #include <stdio.h>
@@ -10,7 +10,7 @@ int main() {
 \end{lstlisting}
 โปรแกรมด้านบนนี้เป็นส่วนของโปรแกรมที่ต้องมีสำหรับการเขียนโปรแกรมภาษา C เพื่อให้การทำงานของโปรแกรมเป็นไปได้อย่างปกติ
 
-\textbf{บรรทัดที่ 1:} \textbf{\texttt{\#include}} คือการนำ header file library  เข้ามาใช้ในโปรแกรม โดย header files มีหน้าที่เพิ่มฟังก์ชั่นการทำงานของโปรแกรมให้สามารถทำงานได้ตามวัตุประสงค์ของเรา ในที่นี้ "stdio.h" เป็นชื่อที่ย่อมาจาก "Standard Input Output" ซึ่งเป็น header file สำคัญในการรับข้อมูลนำเข้าและส่งออก
+\textbf{บรรทัดที่ 1:} \textbf{\texttt{\#include}} คือการนำ header file library  เข้ามาใช้ในโปรแกรม โดย header files มีหน้าที่เพิ่มฟังก์ชั่นการทำงานของโปรแกรมให้สามารถทำงานได้ตามวัตุประสงค์ของเรา ในที่นี้ ``stdio.h'' เป็นชื่อที่ย่อมาจาก ``Standard Input Output" ซึ่งเป็น header สำคัญในการรับข้อมูลนำเข้าและส่งออก นอกจากนี้ยังมี header files ที่สำคัญอีกมากมาย อาทิเช่น ``math.h'' ที่มีฟังก์ชั่นเกี่ยวกับคณิตศาสตร์ต่างๆ , ``ctype.h'' ที่มีฟังก์ชั่นเกี่ยวกับตัวอักษรต่างๆ เป็นต้น
 
 \textbf{บรรทัดที่ 3:} เป็นการประกาศฟังก์ชั่นหลักที่ใช้ในการทำงานของโปรแกรม ทุกครั้งที่โปรแกรมเริ่มทำงานจะเริ่มทำงานที่ฟังก์ชั่น main นี้ก่อนเสมอ
 
@@ -28,14 +28,14 @@ int main() {
 \end{lstlisting}
 โปรแกรมด้านบนนี้เป็นส่วนของโปรแกรมภาษา C++ โดยสังเกตว่าจะคล้ายกับภาษา C มาก แตกต่างกันเพียงบรรทัดที่ 1 และมีบรรทัดที่ 2 เพิ่มมา
 
-\textbf{บรรทัดที่ 1:} "bits/stdc++.h" เป็น header file ของภาษา C++ ที่รวมหลาย header files ที่เป็นประโยชน์เข้าไว้ด้วยกัน เพื่อเพิ่มความสะดวกของผู้ใช้ (ไม่ต้องทำการ \textbf{\texttt{\#include}} หลายๆ รอบ)
+\textbf{บรรทัดที่ 1:} ``bits/stdc++.h" เป็น header file ของภาษา C++ ที่รวมหลาย header files ที่เป็นประโยชน์เข้าไว้ด้วยกัน เพื่อเพิ่มความสะดวกของผู้ใช้ (ไม่ต้องทำการ \textbf{\texttt{\#include}} หลายๆ รอบ)
 
-\textbf{บรรทัดที่ 2:} \textbf{\texttt{using namespace std;}} เป็นคำสั่งเพื่อละการเขียน "\textbf{\texttt{std::}}" หน้าบางคำสั่ง เพื่อให้สามารถขียนโปรแกรมได้รวดเร็วยิ่งขึ้น
+\textbf{บรรทัดที่ 2:} \textbf{\texttt{using namespace std;}} เป็นคำสั่งเพื่อละการเขียน "\textbf{\texttt{std::}}" หน้าบางคำสั่ง เพื่อให้สามารถเขียนโปรแกรมได้รวดเร็วยิ่งขึ้น
 
 \subsection{Comments}
 การเขียนคำอธิบายในภาษา C/C++ สามารถทำได้ 2 วิธี
 \begin{enumerate}
-\item Single-line comments เป็นการเขียนคำอธิบายแบบบรรทัดเดียว ใช้เครื่องหมาย \textbf{\texttt{//}} ไว้หน้าข้อความที่ต้องการให้กลายเป็นอธิบาย และไม่ถูก compile 
+\item Single-line comments เป็นการเขียนคำอธิบายแบบบรรทัดเดียว ใช้เครื่องหมาย \textbf{\texttt{//}} ไว้หน้าข้อความที่ต้องการให้กลายเป็นคำอธิบาย และไม่ถูก compile 
 \begin{lstlisting}
 // This is a single-line comment
 #include<bits/stdc++.h>	//Can be used after each line too 
@@ -198,8 +198,8 @@ printf("%d %lf %c %s\n", w, x, y, z);
 cin >> w >> x >> y >> z;
 cout << w << ' ' << x << ' ' << y << ' ' << z << endl;
 \end{lstlisting}
-การรับค่าของภาษา C++ จะใช้คำสั่ง \textbf{\texttt{cin}} โดยมีเครื่องหมาย \textbf{\texttt{<<}} คั่นอยู่ระหว่างคำสั่ง และตัวแปรต่างๆ \\
-การแสดงผลของภาษา C++ จะใช้คำสั่ง \textbf{\texttt{cout}} โดยมีเครื่องหมาย \textbf{\texttt{>>}} คั่นอยู่ระหว่างคำสั่ง และตัวแปรต่างๆ \\
+การรับค่าของภาษา C++ จะใช้คำสั่ง \textbf{\texttt{cin}} โดยมีเครื่องหมาย \textbf{\texttt{>>}} คั่นอยู่ระหว่างคำสั่ง และตัวแปรต่างๆ \\
+การแสดงผลของภาษา C++ จะใช้คำสั่ง \textbf{\texttt{cout}} โดยมีเครื่องหมาย \textbf{\texttt{<<}} คั่นอยู่ระหว่างคำสั่ง และตัวแปรต่างๆ \\
 นอกจากนี้ โปรแกรมภาษา C++ ก็สามารถใช้คำสั่ง \textbf{\texttt{scanf}} และ \textbf{\texttt{printf}} ของภาษา C ได้เช่นกัน
 
 \noindent\textbf{หมายเหตุ:} \textbf{\texttt{endl}} ที่อยู่ต่อท้ายเป็นการระบุว่า ให้ขึ้นบรรทัดใหม่เมื่อแสดงผลบรรทัดนี้แล้ว (เช่นเดียวกันกับ \texttt{\textbackslash n})
@@ -228,14 +228,14 @@ cout << w << ' ' << x << ' ' << y << ' ' << z << endl;
 \hline
 \textbf{ตัวดำเนินการ} & \textbf{การใช้งาน} & \textbf{ผลลัพธ์} \\
 \hline
-\texttt{=} & \texttt{x = 5} & \texttt{x = 5} \\
-\texttt{+=} & \texttt{x += 5} & \texttt{x = x + 5} \\
-\texttt{-=} & \texttt{x -= 5} & \texttt{x = x - 5} \\
-\texttt{*=} & \texttt{x *= 5} & \texttt{x = x * 5} \\
-\texttt{/=} & \texttt{x /= 5} & \texttt{x = x / 5} \\
-\texttt{\%=} & \texttt{x \%= 5} & \texttt{x = x \% 5} \\
-\texttt{\&=} & \texttt{x \&= 5} & \texttt{x = x \& 5} \\
-\texttt{|=} & \texttt{x |= 5} & \texttt{x = x | 5} \\
+= & \texttt{x = 5} & \texttt{x = 5} \\
++= & \texttt{x += 5} & \texttt{x = x + 5} \\
+-= & \texttt{x -= 5} & \texttt{x = x - 5} \\
+*= & \texttt{x *= 5} & \texttt{x = x * 5} \\
+/= & \texttt{x /= 5} & \texttt{x = x / 5} \\
+\%= & \texttt{x \%= 5} & \texttt{x = x \% 5} \\
+\&= & \texttt{x \&= 5} & \texttt{x = x \& 5} \\
+|= & \texttt{x |= 5} & \texttt{x = x | 5} \\
 \hline
 \end{tabular}
 \end{center}
@@ -245,12 +245,12 @@ cout << w << ' ' << x << ' ' << y << ' ' << z << endl;
 \hline
 \textbf{ตัวดำเนินการ} & \textbf{ชื่อ} & \textbf{การใช้งาน} \\
 \hline
-\texttt{==} & เท่ากับ & \texttt{x == y} \\
-\texttt{!=} & ไม่เท่ากับ & \texttt{x != y} \\
-\texttt{>} & มากกว่า & \texttt{x > y} \\
-\texttt{<} & น้อยกว่า & \texttt{x < y} \\
-\texttt{>=} & มากกว่าหรือเท่ากับ & \texttt{x >= y} \\
-\texttt{<=} & น้อยกว่าหรือเท่ากับ & \texttt{x <= y} \\
+== & เท่ากับ & \texttt{x == y} \\
+!= & ไม่เท่ากับ & \texttt{x != y} \\
+> & มากกว่า & \texttt{x > y} \\
+< & น้อยกว่า & \texttt{x < y} \\
+>= & มากกว่าหรือเท่ากับ & \texttt{x >= y} \\
+<= & น้อยกว่าหรือเท่ากับ & \texttt{x <= y} \\
 \hline
 \end{tabular}
 \end{center}
@@ -312,20 +312,22 @@ switch (expression) {
 \end{enumerate}
 
 \begin{lstlisting}
+/*
 for (initial; condition; update) {
 	//block of code to be executed
 }
-
+*/
 for (int i = 0; i < 5; i++) {
 	printf("%d\n", i);
 }
 
+/*
 initial
 while (condition) {
 	//block of code to be executed
     update
 }
-
+*/
 int i = 0;
 while (i < 5) {
 	printf("%d\n", i);
