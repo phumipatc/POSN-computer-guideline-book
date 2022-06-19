@@ -1,0 +1,26 @@
+\chapter{กระบวนการจับคู่สายอักขระ (String Matching Algorithm)}
+
+เป้าหมายของ String Matching algorithm คือเมื่อกำหนดสายอักขระ $S$ และ $p$ ให้ ต้องการตรวจสอบว่ามีสายอักขระ $p$ อยู่ในสายอักขระ $S$ หรือไม่ หากทำด้วยวิธีตรง (Brute force) จะต้องใช้เวลาการทำงานถึง $O(nm)$ เมื่อ $n$ และ $m$ เป็นความยาวของสายอักขระ $S$ และ $p$ ตามลำดับ
+
+\section{ขั้นตอนวิธีของคนูธ-มอร์ริส-แพรตต์ (Knuth–Morris–Pratt algorithm)}
+
+Knuth–Morris–Pratt algorithm (หรือ KMP algorithm) มีหลักการทำงาน คือ สายอักขระ $S_iS_{i+1}S_{i+2}...S_{i+m-1}$ และสายอักขระ $S_{i+1}S_{i+2}S_{i+3}...S_{i+m}$ มีสายอักขระที่เหมือนกันอยู่ คือ $S_{i+1}S_{i+2}...S_{i+m-1}$ ดังนั้นหากเราสามารถใช้ประโยชน์จากการซำ้กันในส่วนนี้ได้ จะทำให้สามารถลดเวลาที่ต้องใช้ในการทำงานลงได้
+
+\subsection{ขั้นตอนเตรียมการ (Preprocessing)}
+
+ขั้นตอนเตรียมการ
+
+\begin{lstlisting}
+void KMP_Preprocess(int m){
+	int j = 0;
+	for (int i = 2; i <= m; i++){
+		while (j > 0 && B[j + 1] != B[i])
+			j = jump[j];
+		if (B[j + 1] == B[i])
+			j++;
+		jump[i] = j;
+	}
+}
+\end{lstlisting}
+
+\subsection{ขั้นตอนการค้นหา (Searching)}

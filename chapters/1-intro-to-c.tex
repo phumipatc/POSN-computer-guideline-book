@@ -4,8 +4,8 @@
 \begin{lstlisting}
 #include <stdio.h>
 
-int main() {
-  return 0;
+int main(){
+	return 0;
 }
 \end{lstlisting}
 โปรแกรมด้านบนนี้เป็นส่วนของโปรแกรมที่ต้องมีสำหรับการเขียนโปรแกรมภาษา C เพื่อให้การทำงานของโปรแกรมเป็นไปได้อย่างปกติ
@@ -49,7 +49,7 @@ This is the second line of multi-line comment
 \end{lstlisting}
 \end{enumerate}
 
-\section{Variables}
+\section{ตัวแปร (Variables)}
 ในภาษา C/C++ มีตัวแปรที่เก็บข้อมูลได้หลากหลายประเภทด้วยกัน
 \subsubsection{Basic Data Types}
 \begin{center}
@@ -65,7 +65,7 @@ This is the second line of multi-line comment
 \end{tabular}
 \end{center}
 นอกจากนี้ ยังมีการนำ \texttt{char} มาประยุกต์เป็น array of char (\texttt{char[]}) เพื่อให้สามารถเก็บชุดอักขระ (String) ได้
-\subsection{Variables Declaration}
+\subsection{การประกาศตัวแปร}
 การประกาศตัวแปรสามารถทำได้โดยการระบุประเภทตัวแปร ชื่อตัวแปร เป็นเบื้องต้น ซึ่งสามารถประกาศได้ 2 วิธี ได้แก่
 \begin{enumerate}
 \item การประกาศตัวแปรพร้อมระบุค่า
@@ -108,7 +108,7 @@ maxNumber = 10;	//error: can\'t change constant variable's value
 \end{lstlisting}
 
 \newpage
-\subsubsection{General rules for variables naming}
+\subsubsection{กฎการตั้งชื่อตัวแปร}
 \begin{enumerate}
 \item ชื่อตัวแปรสามารถมีตัวอักษร, ตัวเลข, และ underscore (\texttt{\_}) เท่านั้น ไม่สามารถมีช่องว่างหรือตัวอักษรพิเศษ เช่น \texttt{!, \#, \%} เป็นต้น
 \item ชื่อตัวแปรต้องขึ้นต้นด้วยตัวอักษรหรือ underscore เท่านั้น ไม่สามารถขึ้นต้นด้วยตัวเลขได้
@@ -156,14 +156,14 @@ xor\_eq &  &  \\
 \end{tabular}
 \end{center}
 
-\section{Input/Output}
+\section{ข้อมูลนำเข้า/ข้อมูลส่งออก}
 
 การรับค่าจากผู้ใช้ และการแสดงผลทางหน้าจอสามารถทำได้แตกต่างกันตามภาษา C หรือ C++
 \begin{lstlisting}
 int w;
 double x;
 char y;
-char[10] z;
+char z[10];
 
 //C language
 scanf("%d %lf %c %s", &w, &x, &y, z);
@@ -205,7 +205,7 @@ cout << w << ' ' << x << ' ' << y << ' ' << z << endl;
 \noindent\textbf{หมายเหตุ:} \textbf{\texttt{endl}} ที่อยู่ต่อท้ายเป็นการระบุว่า ให้ขึ้นบรรทัดใหม่เมื่อแสดงผลบรรทัดนี้แล้ว (เช่นเดียวกันกับ \texttt{\textbackslash n})
 
 \newpage
-\subsection{Operators}
+\subsection{การดำเนินการ}
 \subsubsection{Arithmetic}
 \begin{center}
 \begin{tabular}{||c|c|c|c||}
@@ -269,31 +269,31 @@ cout << w << ' ' << x << ' ' << y << ' ' << z << endl;
 \end{center}
 
 \newpage
-\section{Conditions}
+\section{การสร้างเงื่อนไข}
 เราสามารถเลือกให้โปรแกรมทำบางคำสั่ง เมื่อเงื่อนไขเป็นจริงเท่านั้น โดยการใช้ \textbf{\texttt{if-else}} หรือ \textbf{\texttt{switch}} ได้
 \begin{lstlisting}
-if (condition1) {
+if (condition1){
 	// code to be executed if the condition1 is true
-}else if (condition2) {
+}else if (condition2){
 	// code to be executed if the condition1 is false and condition2 is true
-} else if (condition3) {
+}else if (condition3){
 	// code to be executed if the condition1,2 is false and condition 3 is true
-} else {
+}else{
 	// code to be executed if the condition1,2,3 is false
 }
 \end{lstlisting}
 การเขียนเงื่อนไขโดยใช้ \textbf{\texttt{if}}, \textbf{\texttt{else if}}, และ \textbf{\texttt{else}} จะเป็นที่นิยมเนื่องจากใช้งานได้ง่ายและสะดวก
 
 \begin{lstlisting}
-switch (expression) {
-	case x:
-    	// code to be executed if expression is equal to x
-        break;
-    case y:
-    	// code to be executed if expression is equal to y
-        break;
-    default:
-    	// code to be executed if expression is not equal to any case
+switch (expression){
+case x:
+	// code to be executed if expression is equal to x
+	break;
+case y:
+	// code to be executed if expression is equal to y
+	break;
+default:
+	// code to be executed if expression is not equal to any case
 }
 \end{lstlisting}
 การเขียนเงื่อนไขโดยการใช้ \textbf{\texttt{switch}} จะต้องระบุ \texttt{expression}ให้ตรงกับ \texttt{case} พอดี ไม่สามารถเปรียบเทียบน้อยกว่า หรือมากกว่าได้
@@ -301,10 +301,10 @@ switch (expression) {
 \noindent\textbf{หมายเหตุ:} ทุก \texttt{case} ของ \texttt{switch} จะต้องมีคำสั่ง \textbf{\texttt{break}} ต่อท้ายอยู่เสมอ
 
 \newpage
-\section{Loop}
-การวนซ้ำสามารถใช้ในการทำงานซ้ำหลายๆ ครั้งตราบใดที่เงื่อนไขของการวนซ้ำยังเป็นจริงอยู่ ประโยชน์ของการวนซ้ำคือลดระยะเวลาการเขียนลง ลดการเกิด errors และทำให้โปรแกรมอ่านง่ายขึ้น
+\section{การวนซำ้}
+การวนซำ้สามารถใช้ในการทำงานซำ้ลายๆ ครั้งตราบใดที่เงื่อนไขของการวนซำ้ยังเป็นจริงอยู่ ประโยชน์ของการวนซำ้คือลดระยะเวลาการเขียนลง ลดการเกิด errors และทำให้โปรแกรมอ่านง่ายขึ้น
 
-การวนซ้ำทุกรูปแบบจะมี 3 สิ่งสำคัญได้แก่
+การวนซำ้ทุกรูปแบบจะมี 3 สิ่งสำคัญได้แก่
 \begin{enumerate}
 \item จุดเริ่มต้น (initial)
 \item เงื่อนไข (condition)
@@ -313,28 +313,28 @@ switch (expression) {
 
 \begin{lstlisting}
 /*
-for (initial; condition; update) {
-	//block of code to be executed
-}
-*/
-for (int i = 0; i < 5; i++) {
-	printf("%d\n", i);
-}
+	for (initial; condition; update) {
+		//block of code to be executed
+	}
+	*/
+	for (int i = 0; i < 5; i++){
+		printf("%d\n", i);
+	}
 
-/*
-initial
-while (condition) {
-	//block of code to be executed
-    update
-}
-*/
-int i = 0;
-while (i < 5) {
-	printf("%d\n", i);
-    i++;
-}
+	/*
+	initial
+	while (condition) {
+		//block of code to be executed
+		update
+	}
+	*/
+	int i = 0;
+	while (i < 5){
+		printf("%d\n", i);
+		i++;
+	}
 \end{lstlisting}
-ตัวอย่างโปรแกรมด้านบนเป็นโปรแกรมเพื่อแสดงผลตัวเลข 0 ถึง 4 บรรทัดละ 1 จำนวน โดยการวนซ้ำด้วย \textbf{\texttt{for}} และ \textbf{\texttt{while}} เริ่มต้นที่ \textbf{\texttt{i = 0}} โดยมีเงื่อนไขการวนซ้ำคือ \textbf{\texttt{i < 5}} และมีส่วนการเปลี่ยนแปลงคือ \textbf{\texttt{i++}}
+ตัวอย่างโปรแกรมด้านบนเป็นโปรแกรมเพื่อแสดงผลตัวเลข 0 ถึง 4 บรรทัดละ 1 จำนวน โดยการวนซำ้ด้วย \textbf{\texttt{for}} และ \textbf{\texttt{while}} เริ่มต้นที่ \textbf{\texttt{i = 0}} โดยมีเงื่อนไขการวนซำ้คือ \textbf{\texttt{i < 5}} และมีส่วนการเปลี่ยนแปลงคือ \textbf{\texttt{i++}}
 \begin{itemize}
 \item ขณะที่ \textbf{\texttt{i = 0}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{0}} ออกมา
 \item ขณะที่ \textbf{\texttt{i = 1}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{1}} ออกมา
@@ -343,40 +343,39 @@ while (i < 5) {
 \item ขณะที่ \textbf{\texttt{i = 4}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{4}} ออกมา
 \item ขณะที่ \textbf{\texttt{i = 5}} ซึ่ง \textbf{\texttt{i !< 5}} จึงหยุดการวนซ้ำ
 \end{itemize}
-นอกจากนี้ยังมีการวนซ้ำแบบ \textbf{\texttt{do-while}} ซึ่งจะทำงานก่อน 1 รอบไม่ว่าเงื่อนไขที่กำหนดจะเป็นจริงหรือไม่ แล้วจึงตรวจสอบเงื่อนไขก่อนทำงานรอบถัดไป
+
+นอกจากนี้ยังมีการวนซำ้แบบ \textbf{\texttt{do-while}} ซึ่งจะทำงานก่อน 1 รอบไม่ว่าเงื่อนไขที่กำหนดจะเป็นจริงหรือไม่ แล้วจึงตรวจสอบเงื่อนไขก่อนทำงานรอบถัดไป
+\begin{example}
+โปรแกรมต่อไปนี้จะแสดงผลเลข 5 ออกมาแล้วจึงหยุดการทำงาน
 \begin{lstlisting}
 int i = 5;
-do {
+do{
 	printf("%d\n", i);
-}while (i < 5);
+} while (i < 5);
 \end{lstlisting}
-โปรแกรมด้านบนนี้จะแสดงผลเลข 5 ออกมาแล้วจึงหยุดการทำงาน
+\end{example}
 
-ในบางกรณี เราจำเป็นต้องหยุดการวนซ้ำกลางคัน หรือข้ามการวนซ้ำบางขั้นตอน จึงมีคำสั่ง \textbf{\texttt{break}} สำหรับหยุดการวนซ้ำนั้น และ \textbf{\texttt{continue}} สำหรับข้ามการวนซ้ำขั้นตอนหนึ่งๆ
-\begin{lstlisting}
-for (int i = 0; i < 5; i++) {
-	if (i == 2) {
-    	break;
-    }
-	printf("%d\n",i);
-}
-\end{lstlisting}
-โปรแกรมด้านบนนี้จะแสดงผลแค่เลข 0 และเลข 1 บรรทัดละ 1 จำนวน
+ในบางกรณี เราจำเป็นต้องหยุดการวนซำ้กลางคัน หรือข้ามการวนซำ้บางขั้นตอน จึงมีคำสั่ง \textbf{\texttt{break}} สำหรับหยุดการวนซำ้นั้น และ \textbf{\texttt{continue}} สำหรับข้ามการวนซำ้ขั้นตอนหนึ่งๆ
+
+\begin{example}
+โปรแกรมต่อไปนี้จะแสดงผลแค่เลข 0 และเลข 1 บรรทัดละ 1 จำนวน
 \begin{itemize}
 \item ขณะที่ \textbf{\texttt{i = 0}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{0}} ออกมา
 \item ขณะที่ \textbf{\texttt{i = 1}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{1}} ออกมา
 \item ขณะที่ \textbf{\texttt{i = 2}} ซึ่ง \textbf{\texttt{i < 5}} แต่ตรงกับเงื่อนไขของคำสั่ง \textbf{\texttt{break}} จึงหยุดการวนซ้ำทันที
 \end{itemize}
-
 \begin{lstlisting}
-for (int i = 0; i < 5; i++) {
-	if (i == 2) {
-    	continue;
-    }
-	printf("%d\n",i);
+for (int i = 0; i < 5; i++){
+	if (i == 2){
+		break;
+	}
+	printf("%d\n", i);
 }
 \end{lstlisting}
-โปรแกรมด้านบนนี้จะแสดงผลแค่เลข 0, 1, 3, และ 4 บรรทัดละ 1 จำนวน
+\end{example}
+
+\begin{example}
+โปรแกรมต่อไปนี้จะแสดงผลแค่เลข 0, 1, 3, และ 4 บรรทัดละ 1 จำนวน
 \begin{itemize}
 \item ขณะที่ \textbf{\texttt{i = 0}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{0}} ออกมา
 \item ขณะที่ \textbf{\texttt{i = 1}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{1}} ออกมา
@@ -385,3 +384,12 @@ for (int i = 0; i < 5; i++) {
 \item ขณะที่ \textbf{\texttt{i = 4}} ซึ่ง \textbf{\texttt{i < 5}} จึงแสดงผลเลข \textbf{\texttt{4}} ออกมา
 \item ขณะที่ \textbf{\texttt{i = 5}} ซึ่ง \textbf{\texttt{i !< 5}} จึงหยุดการวนซ้ำ
 \end{itemize}
+\begin{lstlisting}
+for (int i = 0; i < 5; i++){
+	if (i == 2){
+		continue;
+	}
+	printf("%d\n", i);
+}
+\end{lstlisting}
+\end{example}

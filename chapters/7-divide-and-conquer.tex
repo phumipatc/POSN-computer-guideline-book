@@ -1,0 +1,36 @@
+\chapter{การแบ่งแยกและเอาชนะ (Divide \& Conquer)}
+
+การแบ่งแยกและเอาชนะเป็นเทคนิคหนึ่งที่เป็นพื้นฐานในกระบวนการคิดอื่นๆ อีกมากมาย โดยมี 3 ส่วนสำคัญ ได้แก่
+\begin{enumerate}
+\item แบ่งแยก (Divide): แบ่งปัญหาใหญ่ๆ ออกเป็นปัญหาย่อยๆ เพื่อความง่ายในการแก้ปัญหา
+\item เอาชนะ (Conquer): แก้ปัญหาย่อยๆ โดยการ recursive ไปเรื่อยๆ
+\item รวม (Combine): รวมปัญหาย่อยๆ ที่แก้ไขแล้วเข้าด้วยกันเพื่อใช้ในการแก้ปัญหาใหญ่
+\end{enumerate}
+
+ตัวอย่างของ Divide \& Conquer algorithm ได้แก่ Merge sort ที่กล่าวไปในบทที่แล้ว และยังมีอีกมากมายที่จะกล่าวในบทนี้
+
+\section{Closest Pair of Points}
+
+กำหนดให้มี $n$ จุดกระจายอยู่ทั่วระนาบ $xy$ และต้องการหาระยะห่างระหว่างคู่จุดใดๆ ที่น้อยที่สุด
+
+วิธีการแก้ปัญหาโดยตรง คือการทำตรงๆ (Brute force) เป็นการตรวจสอบระยะห่างระหว่างทุกคู่จุด ซึ่งใช้เวลาการทำงาน $O(n^2)$ 
+
+\begin{lstlisting}
+void bruteForce(){
+	int minDistance = INF;
+	for (){
+		for (Point y : allPoints){
+			if (x != y){
+				int currentDistance = getDistance(x, y);
+				if (minDistance > currentDistance)
+					minDistance = currentDistance;
+			}
+		}
+	}
+	return minDistance;
+}
+\end{lstlisting}
+
+โดยฟังก์ชั่น \texttt{getDistance} เป็นฟังก์ชั่นคำนวนระยะห่างระหว่าง 2 จุดใดๆ
+
+*** Not ended ***

@@ -1,7 +1,7 @@
-\chapter{Function \& Recursion}
+\chapter{ฟังก์ชั่น และฟังก์ชั่นเวียนบังเกิด}
 ฟังก์ชั่นคือส่วนของโปรแกรมที่จะทำงานก็ต่อเมื่อถูกเรียกใช้งานเท่านั้น ฟังก์ชั่นมักจะถูกใช้เป็นการทำงานเฉพาะๆ หรืองานส่วนหนึ่งๆ ซึ่งมีโอกาสถูกเรียกใช้ซำ้ฟังก์ชั่นจึงสามารถเข้ามาช่วยแก้ปัญหานี้ได้ โดยการสร้างฟังก์ชั่นขึ้นมา แล้วจึงเรียกใช้ฟังก์ชั่นนี้ซำ้นั่นเอง
 
-\section{Function Creation}
+\section{การสร้างฟังก์ชั่น}
 การสร้างฟังก์ชั่นสามารถทำได้โดยการระบุประเภทฟังก์ชั่น, ชื่อฟังก์ชั่น และการทำงานของฟังก์ชั่นนั้นๆ
 \begin{lstlisting}
 type functionName() {
@@ -10,19 +10,19 @@ type functionName() {
 \end{lstlisting}
 ประเภทของฟังก์ชั่นใช้สำหรับบอกว่าฟังก์ชั่นนี้จะคืนค่าประเภทใดออกมาหลังจากจบการทำงานของฟังก์ชั่นนี้แล้ว โดยจะเหมือนกันกับประเภทของตัวแปร เพียงแต่มีเพิ่มเติมมา 1 ชนิดที่ควรต้องทราบ คือ \textbf{\texttt{void}} ซึ่งเป็นประเภทของฟังก์ชั่นที่ไม่มีการคืนค่าใดๆ กลับมา
 \begin{lstlisting}
-void showHelloToTheWorld() {
+void showHelloToTheWorld(){
 	printf("Hello, world.\n");
-    // no need to return anything
+	// no need to return anything
 }
-int currentYear() {
+int currentYear(){
 	return 2022;
-    // return some integer
+	// return some integer
 }
 \end{lstlisting}
 
 นอกจากนี้ ฟังก์ชั่นสามารถรับค่าพารามิเตอร์ (เปรียบเสมือนข้อมูลนำเข้าสำหรับฟังก์ชั่น) ได้โดยการใส่ประเภทตัวแปร และชื่อตัวแปรลงไปใน \texttt{( )} หลังชื่อฟังก์ชั่น
 \begin{lstlisting}
-int sum (int a, int b) {
+int sum(int a, int b){
 	return a + b;
 }
 \end{lstlisting}
@@ -32,10 +32,10 @@ int sum (int a, int b) {
 void add(int a, int b){
 	a += b;
 }
-int main () {
+int main(){
 	int a = 10, b = 5;
-    add(a, b);
-    printf("%d\n", a);
+	add(a, b);
+	printf("%d\n", a);
 }
 \end{lstlisting}
 โปรแกรมด้านบนนี้เป็นโปรแกรมเพื่อบวกค่าของตัวแปร \texttt{b} เข้าไปในตัวแปร \texttt{a} แต่หากลองให้โปรแกรมนี้ทำงานแล้ว ผลลัพธ์จะออกมาว่าค่าของตัวแปร \texttt{a} ยังมีค่าเป็น 10 เหมือนเดิมไม่มีการเปลี่ยนแปลงใดๆ เพราะการบวกค่าตัวแปร \texttt{a} ภายในฟังก์ชั่น \texttt{add} เป็นตัวแปรคนละตัวกับตัวแปร \texttt{a} ภายในฟังก์ชั่น \texttt{main} นั่นเอง
@@ -45,24 +45,24 @@ int main () {
 void add(int &a, int &b){
 	a += b;
 }
-int main() {
+int main(){
 	int a = 10, b = 5;
-    add(a, b);
-    printf("%d\n", a);
+	add(a, b);
+	printf("%d\n", a);
 }
 \end{lstlisting}
 ผลลัพธ์จากการทำงานของโปรแกรมด้านบนนี้จะได้ค่าของตัวแปร \texttt{a} ออกมาเป็น 15
 
-\section{Recursion}
+\section{ฟังก์ชั่นเวียนบังเกิด (Recursive function)}
 การเรียกซ้ำ คือการให้ฟังก์ชั่นเรียกใช้ตัวเอง เพื่อทำการย่อยปัญหาให้เล็กลง แล้วแก้ปัญหาย่อยนั้นก่อนที่จะส่งผลลัพธ์จากการแก้ปัญหาย่อยนั้นกลับไปเพื่อแก้ปัญหาที่ใหญ่ขึ้น โดยจะเรียกฟังก์ชั่นเหล่านี้ว่า ฟังก์ชั่นเวียนบังเกิด (Recursive function)
 
 Recursive function อาจจะดูเป็นเรื่องยากที่จะเข้าใจ แต่หากลองฝึกทำโจทย์บ่อยๆ จะเข้าใจได้มากยิ่งขึ้น และนอกจากนี้ recursive function ยังเป็นพื้นฐานสำหรับเรื่องต่างๆ อีกมากมายที่เราจะได้เรียนภายในค่าย
 \begin{lstlisting}
-int sum(int k) {
-	if (k == 0) {
-    	return 0;
-    }
-    return k + sum(k - 1);
+int sum(int k){
+	if (k == 0){
+		return 0;
+	}
+	return k + sum(k - 1);
 }
 \end{lstlisting}
 ฟังก์ชั่นด้านบนนี้เป็น recursive function เพื่อหาผลรวมของจำนวนตั้งแต่ 0 ถึง \texttt{k} เช่น หากเมื่อเรียกใช้ \textbf{\texttt{sum(5)}} สิ่งที่เกิดขึ้นจะเป็นขั้นตอน ดังนี้
@@ -78,14 +78,14 @@ int sum(int k) {
 จะเห็นได้ว่า ฟังก์ชั่น \texttt{sum} ได้ทำการเรียกตัวเองซ้ำ แต่มีการเปลี่ยนแปลงค่าพารามิเตอร์ที่ลดน้อยลงเรื่อยๆ จน \texttt{k = 0} จึงไม่มีการเรียกตัวเองซ้ำอีกแล้ว
 
 \begin{lstlisting}
-int fibonacci(int k) {
+int fibonacci(int k){
 	if (k == 0){
-    	return 0;
-    }
-    if (k == 1) {
-    	return 1;
-    }
-    return fibonacci(k - 2) + fibonacci(k - 1);
+		return 0;
+	}
+	if (k == 1){
+		return 1;
+	}
+	return fibonacci(k - 2) + fibonacci(k - 1);
 }
 \end{lstlisting}
 ฟังก์ชั่นด้านบนนี้เป็นฟังก์ชั่นหาค่า fibonacci ลำดับที่ \texttt{k} เช่น เมื่อต้องการหาค่า fibonacci ลำดับที่ 4 จะมีขั้นตอนดังนี้
@@ -103,44 +103,25 @@ int fibonacci(int k) {
 \end{itemize}
 
 	Recursive function ที่ยกมาข้างต้นเป็นตัวอย่างพื้นฐานเท่านั้น ยังมีอีกมากมายที่ซับซ้อนมากกว่านี้ เช่น โปรแกรมการเรียงสับเปลี่ยน และการจัดหมู่เป็นต้น
+\begin{example}
+ฟังก์ชั่นต่อไปนี้เป็นฟังก์ชั่นแสดงผลการเรียงสับเปลี่ยนของตัวเลขตั้งแต่ 1 จนถึง n ออกมา บรรทัดละ 1 ลำดับ
     \begin{lstlisting}
-    void permutation(int state){
-    	if (state == n){
-        	for (int i = 0; i < n; i++) {
-            	printf("%d ",currentPermutation[i]);
-            }
-            printf("\n");
-        	return ;
-        }
-        for (int i = 1; i <= n; i++) {
-        	if (!isused[i]) {
-            	isused[i] = true;
-                currentPermutation[state] = i;
-                permute(state + 1);
-                isused[i] = false;
-            }
-        }
-    }
+void permutation(int state){
+	if (state == n){
+		for (int i = 0; i < n; i++){
+			printf("%d ", currentPermutation[i]);
+		}
+		printf("\n");
+		return;
+	}
+	for (int i = 1; i <= n; i++){
+		if (!isused[i]){
+			isused[i] = true;
+			currentPermutation[state] = i;
+			permute(state + 1);
+			isused[i] = false;
+		}
+	}
+}
     \end{lstlisting}
-    โปรแกรมข้างต้นเป็นโปรแกรมแสดงผลการเรียงสับเปลี่ยนของตัวเลขตั้งแต่ 1 จนถึง n ออกมา บรรทัดละ 1 ลำดับ
-    
-    \begin{lstlisting}
-    void combination(int state, int lastUsed){
-    	if (state == n){
-        	for (int i = 0; i < n; i++) {
-            	printf("%d ",currentPermutation[i]);
-            }
-            printf("\n");
-        	return ;
-        }
-        for (int i = lastUsed + 1; i <= n; i++) {
-        	if (!isused[i]) {
-            	isused[i] = true;
-                currentPermutation[state] = i;
-                permute(state + 1, i);
-                isused[i] = false;
-            }
-        }
-    }
-    \end{lstlisting}
-    โปรแกรมข้างต้นเป็นโปรแกรมแสดงผลการจัดหมู่ของตัวเลขตั้งแต่ 1 จนถึง n ออกมา บรรทัดละ 1 ลำดับ
+\end{example}
