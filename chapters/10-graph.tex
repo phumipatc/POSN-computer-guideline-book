@@ -53,15 +53,7 @@
 สำหรับการนำไปเขียนโปรแกรมคอมพิวเตอร์ สามารถนำ array 2 มิติมาใช้แทนเมทริกซ์ 2 มิติได้ โดยมีนิยามแบบเดียวกันกับเมทริกซ์เลย
 
 \begin{lstlisting}
-void adjacencyMatrix(int n, int m)
-{
-	int u, v;
-	int matrix[n][n];
-	for (int i = 0; i < m; i++){
-		scanf("%d %d", &u, &v);
-		matrix[u][v] = matrix[v][u] = 1;
-	}
-}
+matrix[u][v] = matrix[v][u] = w;
 \end{lstlisting}
 
 \newpage
@@ -80,13 +72,6 @@ void adjacencyMatrix(int n, int m)
 สำหรับการนำไปเขียนโปรแกรมคอมพิวเตอร์ สามารถนำ STL Vector มาใช้ได้
 
 \begin{lstlisting}
-void adjacencyList(int n, int m){
-	int u, v;
-	vector<int> graph[n];
-	for (int i = 0; i < m; i++){
-		scanf("%d %d", &u, &v);
-		graph[u].push_back(v);
-		graph[v].push_back(u);
-	}
-}
+graph[u].push_back(v);
 \end{lstlisting}
+
